@@ -1,0 +1,98 @@
+---
+title: "پروژه_دوم_آزمایشگاه اماری"
+author: "عارفه سامعی"
+date: "2024-12-13"
+output: html_document
+---
+
+سوال 1
+احتمال اینکه 4 بار شیر مشاهده شود
+```{r }
+dbinom(x = 4 ,size = 5 ,prob = 0.5)
+```
+
+احتمال اینکه حداقل 3 شیر مشاهده شود
+```{r }
+1-pbinom(3 , size = 5 ,prob = 0.5)
+```
+
+احتمال اینکه هیچ شیری مشاهده نشود
+```{r }
+dbinom(x = 0, size = 5 ,prob = 0.5)
+```
+
+سوال 2
+احتمال اینکه کمتر از 5 باشد
+```{r }
+n = 36
+count = 0
+for (x1 in 1:6) {
+  for (x2 in 1:6) {
+    y = min(x1,x2)
+    if (y < 5) {
+      count = count + 1
+    }
+  }
+}
+prob = count/n
+prob
+```
+
+احتمال اینکه برابر با 1 باشد
+```{r }
+n = 36
+count = 0
+for (x1 in 1:6) {
+  for (x2 in 1:6) {
+    y = min(x1,x2)
+    if (y == 1) {
+      count = count + 1
+    }
+  }
+}
+prob = count/n
+prob
+```
+
+احتمال اینکه حداکثر 2 باشد
+```{r }
+n = 36
+count = 0
+for (x1 in 1:6) {
+  for (x2 in 1:6) {
+    y = min(x1,x2)
+    if (y <= 2) {
+      count = count + 1
+    }
+  }
+}
+prob = count/n
+prob
+```
+
+سوال 3
+احتمال اینکه در دوبار انتخاب (با جایگذاری)از کیسه،هردو مهره سفید باشند
+```{r }
+white = 5
+green = 7
+blue = 12
+total = white + green + blue
+prob_white = white / total
+prob_two_white = prob_white * prob_white
+prob_two_white
+```
+
+احتمال اینکه در سه بار انتخاب(با جایگذاری)از کیسه،رنگ مهره ها یکسان نباشد
+```{r }
+white = 5
+green = 7
+blue = 12
+total = white + green + blue
+prob_white = white / total
+prob_green = green / total
+prob_blue = blue / total
+prob_all_same = prob_white^3 + prob_green^3 + prob_blue^3
+prob_different_colors = 1 - prob_all_same
+prob_different_colors
+
+```
